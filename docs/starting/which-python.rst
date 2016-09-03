@@ -3,30 +3,64 @@ Picking an Interpreter
 
 .. _which-python:
 
-Today (Python 2)
-~~~~~~~~~~~~~~~~
+The State of Python (2 vs 3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you're choosing a Python interpreter to use, I *highly* recommend you use
-Python 2.7.x, unless you have a strong reason not to.
+When choosing a Python interpreter, one looming question is always present:
+"Should I choose Python 2 or Python 3"? The answer is not as obvious as
+one might think.
 
-Also use Python 2.7.x if you're starting to work on a new Python module. If you
-have managed to get it working on 2.7, you can add support for older 2.x
-versions.
 
-The Future (Python 3)
-~~~~~~~~~~~~~~~~~~~~~
+The basic gist of the state of things is as follows:
 
-    Python 2.x is the status quo, Python 3.x is the shiny new thing.
+1. Python 2.7 has been the standard for a *long* time.
+2. Python 3 introduced major changes to the language, which many developers are unhappy with.
+3. Python 2.7 will receive necessary security updates until 2020 [#pep373_eol]_.
+4. Python 3 is continually evolving, like Python 2 did in years past.
+
+So, you can now see why this is not such an easy decision.
+
+
+Recommendations
+~~~~~~~~~~~~~~~
+
+I'll be blunt:
+
+
+**Use Python 3 if...**
+
+- You don't care.
+- You love Python 3.
+- You are indifferent towards 2 vs 3.
+- You don't know which one to use.
+- You embrace change.
+
+**Use Python 2 if...**
+
+- You love Python 2 and are saddened by the future being Python 3.
+- The stability requirements of your software would be improved by a language and runtime that never changes.
+- Software that you depend on requires it.
+
+
+So.... 3?
+~~~~~~~~~
+
+If you're choosing a Python interpreter to use, and aren't opinionated, then I
+recommend you use the newest Python 3.x, since every version brings new and
+improved standard library modules, security and bug fixes. Progress is progress.
+
+Given such, only use Python 2 if you have a strong reason to, such as a Python 2
+exclusive library which has no adequate Python 3 ready alternative, or you
+(like me) absolutely love and are inspired by Python 2.
+
+Check out `Can I Use Python 3? <https://caniusepython3.com/>`_ to see if any
+software you're depending on will block your adoption of Python 3.
 
 `Further Reading <http://wiki.python.org/moin/Python2orPython3>`_
 
-The difference between Python 3 and Python 2 is much greater, therefore
-writing code that works in both Python 2 and Python 3 is a very complicated
-process.
-
-It is possible to `write code that works on Python 2.6, 2.7 and 3.3
-<http://lucumr.pocoo.org/2013/5/21/porting-to-python-3-redux/>`_. This
-ranges from tricky to extremely hard depending upon the kind of software
+It is possible to `write code that works on Python 2.6, 2.7, and Python 3
+<https://docs.python.org/3/howto/pyporting.html>`_. This
+ranges from trivial to hard depending upon the kind of software
 you are writing; if you're a beginner there are far more important things to
 worry about.
 
@@ -79,7 +113,7 @@ module.
 If you need to interface with an existing Java codebase or have other reasons to
 need to write Python code for the JVM, Jython is the best choice.
 
-Jython currently supports up to Python 2.5. [#jython_ver]_
+Jython currently supports up to Python 2.7. [#jython_ver]_
 
 IronPython
 ----------
@@ -94,8 +128,28 @@ an ideal choice for Windows developers.
 
 IronPython supports Python 2.7. [#iron_ver]_
 
+PythonNet
+---------
+
+`Python for .NET <http://pythonnet.github.io/>`_ is a package which
+provides near seamless integration of a natively installed Python
+installation with the .NET Common Language Runtime (CLR).  This is the
+inverse approach to that taken by IronPython (see above), to which it
+is more complementary than competing with.
+
+In conjunction with Mono, PythonNet enables native Python
+installations on non-Windows operating systems, such as OS X and
+Linux, to operate within the .NET framework.  It can be run in
+addition to IronPython without conflict.
+
+PythonNet supports from Python 2.3 up to Python 2.7. [#pythonnet_ver]_
+
 .. [#pypy_ver] http://pypy.org/compat.html
 
-.. [#jython_ver] http://wiki.python.org/jython/JythonFaq/GeneralInfo#Is_Jython_the_same_language_as_Python.3F
+.. [#jython_ver] https://hg.python.org/jython/file/412a8f9445f7/NEWS
 
 .. [#iron_ver] http://ironpython.codeplex.com/releases/view/81726
+
+.. [#pythonnet_ver] http://pythonnet.github.io/readme.html
+
+.. [#pep373_eol] https://www.python.org/dev/peps/pep-0373/#id2

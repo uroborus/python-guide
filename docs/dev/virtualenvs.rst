@@ -1,9 +1,12 @@
+.. _virtualenvironments-ref:
+
 Virtual Environments
 ====================
 
-A Virtual Environment, put simply, is an isolated working copy of Python which
-allows you to work on a specific project without worry of affecting other
-projects.
+A Virtual Environment is a tool to keep the dependencies required by different
+projects in separate places, by creating virtual Python environments for them.
+It solves the "Project X depends on version 1.x but, Project Y needs 4.x"
+dilemma, and keeps your global site-packages directory clean and manageable.
 
 For example, you can work on a project which requires Django 1.3 while also
 maintaining a project which requires Django 1.0.
@@ -12,9 +15,10 @@ virtualenv
 ----------
 
 `virtualenv <http://pypi.python.org/pypi/virtualenv>`_ is a tool to create
-isolated Python environments.
+isolated Python environments. virtualenv creates a folder which contains all the 
+necessary executables to use the packages that a Python project would need. 
 
-Install it via pip:
+Install virtualenv via pip:
 
 .. code-block:: console
 
@@ -23,14 +27,29 @@ Install it via pip:
 Basic Usage
 ~~~~~~~~~~~
 
-1. Create a virtual environment:
+1. Create a virtual environment for a project:
 
 .. code-block:: console
 
+   $ cd my_project_folder
    $ virtualenv venv
+
+``virtualenv venv`` will create a folder in the current directory which will
+contain the Python executable files, and a copy of the ``pip`` library which you
+can use to install other packages. The name of the virtual environment (in this
+case, it was ``venv``) can be anything; omitting the name will place the files
+in the current directory instead.
 
 This creates a copy of Python in whichever directory you ran the command in,
 placing it in a folder named :file:`venv`.
+
+You can also use a Python interpreter of your choice.
+
+.. code-block:: console
+
+   $ virtualenv -p /usr/bin/python2.7 venv
+
+This will use the Python interpreter in :file:`/usr/bin/python2.7`
 
 2. To begin using the virtual environment, it needs to be activated:
 
@@ -38,8 +57,16 @@ placing it in a folder named :file:`venv`.
 
    $ source venv/bin/activate
 
-You can then begin installing any new modules without affecting the system
-default Python or other virtual environments.
+The name of the current virtual environment will now appear on the left of 
+the prompt (e.g. ``(venv)Your-Computer:your_project UserName$)`` to let you know 
+that it's active. From now on, any package that you install using pip will be 
+placed in the ``venv`` folder, isolated from the global Python installation.
+
+Install packages as usual, for example:
+
+.. code-block:: console
+
+    $ pip install requests
 
 3. If you are done working in the virtual environment for the moment, you can
    deactivate it:
@@ -51,11 +78,46 @@ default Python or other virtual environments.
 This puts you back to the system's default Python interpreter with all its
 installed libraries.
 
-To delete a virtual environment, just delete its folder.
+To delete a virtual environment, just delete its folder. (In this case, 
+it would be ``rm -rf venv``.)
 
 After a while, though, you might end up with a lot of virtual environments
 littered across your system, and its possible you'll forget their names or
 where they were placed.
+
+Other Notes
+~~~~~~~~~~~
+
+Running ``virtualenv`` with the option :option:`--no-site-packages` will not
+include the packages that are installed globally. This can be useful
+for keeping the package list clean in case it needs to be accessed later.
+[This is the default behavior for ``virtualenv`` 1.7 and later.]
+
+In order to keep your environment consistent, it's a good idea to "freeze"
+the current state of the environment packages. To do this, run
+
+.. code-block:: console
+
+    $ pip freeze > requirements.txt
+
+This will create a :file:`requirements.txt` file, which contains a simple
+list of all the packages in the current environment, and their respective
+versions. You can see the list of installed packages without the requirements 
+format using "pip list". Later it will be easier for a different developer 
+(or you, if you need to re-create the environment) to install the same packages
+using the same versions:
+
+.. code-block:: console
+
+    $ pip install -r requirements.txt
+
+This can help ensure consistency across installations, across deployments,
+and across developers.
+
+Lastly, remember to exclude the virtual environment folder from source
+control by adding it to the ignore list.
+
+.. _virtualenvwrapper-ref:
 
 virtualenvwrapper
 -----------------
@@ -74,16 +136,15 @@ To install (make sure **virtualenv** is already installed):
 
 (`Full virtualenvwrapper install instructions <http://virtualenvwrapper.readthedocs.org/en/latest/install.html>`_.)
 
-For Windows, you can use the `virtualenvwrapper-powershell <https://bitbucket.org/guillermooo/virtualenvwrapper-powershell>`_ clone.
+For Windows, you can use the `virtualenvwrapper-win <https://github.com/davidmarble/virtualenvwrapper-win/>`_.
 
 To install (make sure **virtualenv** is already installed):
 
 .. code-block:: console
 
-  PS> pip install virtualenvwrapper-powershell
-  PS> $env:WORKON_HOME="~/Envs"
-  PS> mkdir $env:WORKON_HOME
-  PS> import-module virtualenvwrapper
+  $ pip install virtualenvwrapper-win
+  
+In Windows, the default path for WORKON_HOME is %USERPROFILE%\Envs
 
 Basic Usage
 ~~~~~~~~~~~
@@ -101,6 +162,14 @@ This creates the :file:`venv` folder inside :file:`~/Envs`.
 .. code-block:: console
 
    $ workon venv
+
+Alternatively, you can make a project, which creates the virtual environment,
+and also a project directory inside ``$PROJECT_HOME``, which is ``cd`` -ed into
+when you ``workon myproject``.
+
+.. code-block:: console
+
+   $ mkproject myproject
 
 **virtualenvwrapper** provides tab-completion on environment names. It really
 helps when you have a lot of environments and have trouble remembering their
@@ -138,6 +207,12 @@ Other useful commands
   Shows contents of :file:`site-packages` directory.
 
 `Full list of virtualenvwrapper commands <http://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html>`_.
+
+virtualenv-burrito
+------------------
+
+With `virtualenv-burrito <https://github.com/brainsik/virtualenv-burrito>`_, you
+can have a working virtualenv + virtualenvwrapper environment in a single command.
 
 autoenv
 -------
