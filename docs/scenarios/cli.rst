@@ -16,7 +16,7 @@ Some popular command-line applications include:
 * `httpie <https://github.com/jakubroztocil/httpie>`_ - A command line HTTP
   client, a user-friendly cURL replacement
 * `git <http://git-scm.com/>`_ - A distributed version control system
-* `mercurial <http://mercurial.selenic.com/>`_ - A distributed version control
+* `mercurial <https://www.mercurial-scm.org/>`_ - A distributed version control
   system primarily written in Python
 
 Clint
@@ -30,7 +30,7 @@ column printer, iterator based progress bars and implicit argument handling.
 Click
 -----
 
-`click <http://click.pocoo.org/>`_ is an upcoming Python package for creating
+`click <http://click.pocoo.org/>`_ is a Python package for creating
 command-line interfaces in a composable way with as little code as
 possible. This “Command-line Interface Creation Kit” is highly
 configurable but comes with good defaults out of the box.
@@ -62,3 +62,13 @@ subcommands, output formatters, and other extensions. The framework is meant
 to be used to create multi-level commands such as subversion and git, where
 the main program handles some basic argument parsing and then invokes a
 sub-command to do the work.
+
+Cement
+------
+
+`Cement <http://builtoncement.com/>`_ is an advanced CLI Application Framework. 
+Its goal is to introduce a standard, and feature-full platform
+for both simple and complex command line applications as well
+as support rapid development needs without sacrificing quality. 
+Cement is flexible, and it's use cases span from the simplicity of a micro-framework 
+to the complexity of a meg-framework. 

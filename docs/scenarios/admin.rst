@@ -131,7 +131,7 @@ State files can be written using YAML, the Jinja2 template system or pure Python
 Psutil
 ------
 
-`Psutil <https://code.google.com/p/psutil/>`_ is an interface to different
+`Psutil <https://github.com/giampaolo/psutil/>`_ is an interface to different
 system information (e.g. CPU, memory, disks, network, users and processes).
 
 Here is an example to be aware of some server overload. If any of the
@@ -377,8 +377,6 @@ principle of separation of configuration from the scripts that do the setting up
 Buildout is primarily used to download and set up dependencies in Python eggs
 format of the software being developed or deployed. Recipes for build tasks in any
 environment can be created, and many are already available.
-
-Buidout is written in Python.
 
 Shinken
 -------

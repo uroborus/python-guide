@@ -3,55 +3,45 @@ Picking an Interpreter
 
 .. _which-python:
 
-The State of Python (2 vs 3)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The State of Python (3 & 2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When choosing a Python interpreter, one looming question is always present:
-"Should I choose Python 2 or Python 3"? The answer is not as obvious as
+"Should I choose Python 2 or Python 3"? The answer is a bit more subtle than
 one might think.
 
 
 The basic gist of the state of things is as follows:
 
-1. Python 2.7 has been the standard for a *long* time.
-2. Python 3 introduced major changes to the language, which many developers are unhappy with.
-3. Python 2.7 will receive necessary security updates until 2020 [#pep373_eol]_.
-4. Python 3 is continually evolving, like Python 2 did in years past.
-
-So, you can now see why this is not such an easy decision.
-
+1. Most production applications today use Python 2.7.
+2. Python 3 is ready for the production deployment of applications today.
+3. Python 2.7 will only receive necessary security updates until 2020 [#pep373_eol]_.
+4. The brand name "Python" encapsulates both Python 3 and Python 2.
 
 Recommendations
 ~~~~~~~~~~~~~~~
 
 I'll be blunt:
 
-
-**Use Python 3 if...**
-
-- You don't care.
-- You love Python 3.
-- You are indifferent towards 2 vs 3.
-- You don't know which one to use.
-- You embrace change.
-
-**Use Python 2 if...**
-
-- You love Python 2 and are saddened by the future being Python 3.
-- The stability requirements of your software would be improved by a language and runtime that never changes.
-- Software that you depend on requires it.
-
+- Use Python 3 for new Python applications.
+- If you're learning Python for the first time, familiarizing yourself with Python 2.7 will be very
+  useful, but not more useful than learning Python 3.
+- Learn both. They are both "Python".
+- Software that is already built often depends on Python 2.7.
+- If you are writing a new open source Python library, it's best to write it for both Python 2 and 3
+  simultaneously. Only supporting Python 3 for a new library you want to be widely adopted is a
+  political statement and will alienate many of your users. This is not a problem — slowly, over the next three years, this will become less the case.
 
 So.... 3?
 ~~~~~~~~~
 
-If you're choosing a Python interpreter to use, and aren't opinionated, then I
+If you're choosing a Python interpreter to use, I
 recommend you use the newest Python 3.x, since every version brings new and
-improved standard library modules, security and bug fixes. Progress is progress.
+improved standard library modules, security and bug fixes.
 
-Given such, only use Python 2 if you have a strong reason to, such as a Python 2
-exclusive library which has no adequate Python 3 ready alternative, or you
-(like me) absolutely love and are inspired by Python 2.
+Given such, only use Python 2 if you have a strong reason to, such as a
+pre-existing code-base, a Python 2 exclusive library, simplicity/familiarity,
+or, of course, you absolutely love and are inspired by Python 2. No harm in that.
 
 Check out `Can I Use Python 3? <https://caniusepython3.com/>`_ to see if any
 software you're depending on will block your adoption of Python 3.
@@ -137,12 +127,12 @@ installation with the .NET Common Language Runtime (CLR).  This is the
 inverse approach to that taken by IronPython (see above), to which it
 is more complementary than competing with.
 
-In conjunction with Mono, PythonNet enables native Python
+In conjunction with Mono, pythonnet enables native Python
 installations on non-Windows operating systems, such as OS X and
 Linux, to operate within the .NET framework.  It can be run in
 addition to IronPython without conflict.
 
-PythonNet supports from Python 2.3 up to Python 2.7. [#pythonnet_ver]_
+Pythonnet supports from Python 2.6 up to Python 3.5. [#pythonnet_ver1]_ [#pythonnet_ver2]_
 
 .. [#pypy_ver] http://pypy.org/compat.html
 
@@ -150,6 +140,8 @@ PythonNet supports from Python 2.3 up to Python 2.7. [#pythonnet_ver]_
 
 .. [#iron_ver] http://ironpython.codeplex.com/releases/view/81726
 
-.. [#pythonnet_ver] http://pythonnet.github.io/readme.html
+.. [#pythonnet_ver1] https://travis-ci.org/pythonnet/pythonnet
+
+.. [#pythonnet_ver2] https://ci.appveyor.com/project/TonyRoberts/pythonnet-480xs
 
 .. [#pep373_eol] https://www.python.org/dev/peps/pep-0373/#id2

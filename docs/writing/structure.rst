@@ -200,7 +200,7 @@ it. You can do this a few ways:
    package properly.
 
 I highly recommend the latter. Requiring a developer to run
-`setup.py <http://setup.py>`__ develop to test an actively changing
+``setup.py develop`` to test an actively changing
 codebase also requires them to have an isolated environment setup for
 each instance of the codebase.
 
@@ -602,7 +602,7 @@ clearer and thus preferred.
 This mechanism is useful for separating concerns and avoiding
 external un-related logic 'polluting' the core logic of the function
 or method. A good example of a piece of functionality that is better handled
-with decoration is `memoization <https://en.wikipedia.org/wiki/Memoization#Overview>` or caching: you want to store the results of an
+with decoration is `memoization <https://en.wikipedia.org/wiki/Memoization#Overview>`__ or caching: you want to store the results of an
 expensive function in a table and use them directly instead of recomputing
 them when they have already been computed. This is clearly not part
 of the function logic.

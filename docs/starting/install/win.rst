@@ -3,7 +3,7 @@
 Installing Python on Windows
 ============================
 
-First, download the `latest version <https://www.python.org/ftp/python/2.7.10/python-2.7.10.msi>`_
+First, download the `latest version <https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi>`_
 of Python 2.7 from the official Website. If you want to be sure you are installing a fully
 up-to-date version, click the Downloads > Windows link from the home page of the
 `Python.org web site <http://python.org>`_ .
@@ -54,7 +54,7 @@ command. It also enables you to add this network installation capability to
 your own Python software with very little work.
 
 To obtain the latest version of Setuptools for Windows, run the Python script
-available here: `ez_setup.py <https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py>`_
+available here: `ez_setup.py <https://bootstrap.pypa.io/ez_setup.py>`_
 
 
 You'll now have a new command available to you: **easy_install**. It is
@@ -74,8 +74,8 @@ in separate places, by creating virtual Python environments for them. It solves 
 "Project X depends on version 1.x but, Project Y needs 4.x" dilemma, and keeps 
 your global site-packages directory clean and manageable.
 
-For example, you can work on a project which requires Django 1.3 while also
-maintaining a project which requires Django 1.0.
+For example, you can work on a project which requires Django 1.10 while also
+maintaining a project which requires Django 1.8.
 
 To start using this and see more information: :ref:`Virtual Environments <virtualenvironments-ref>` docs. 
 
